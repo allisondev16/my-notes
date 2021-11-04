@@ -5,9 +5,25 @@
 }
 
 body {
-    
+    font-family: 'Balsamiq Sans', cursive;
+    font-weight: 400;
 }
 
 header {
-    border: solid;
+    text-align: center;
+}
+
+form.create-note {
+    width: 400px;
+    margin: 20px auto;
+    border-radius: 10px;
+    
+}
+
+form.create-note input,
+form.create-note textarea {
+    width: 100%;
+    /* border: none; */
+    outline: none;
+    padding: 4px;
 }
