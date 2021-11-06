@@ -1,3 +1,8 @@
+# What I Learned
+
+- Learned that I can select :hov state in Chrome developer tools to show the :hover styles and other states as well.
+
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).

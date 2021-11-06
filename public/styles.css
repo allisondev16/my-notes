@@ -2,28 +2,59 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-}
-
-body {
     font-family: 'Balsamiq Sans', cursive;
     font-weight: 400;
 }
 
+body {
+    
+}
+
 header {
     text-align: center;
+    margin: 20px 0;
 }
 
 form.create-note {
     width: 400px;
     margin: 20px auto;
     border-radius: 10px;
-    
+    box-shadow: 0 0 10px 0px rgb(0 0 0 / 30%);
+    padding: 10px;
+    position: relative;
 }
 
 form.create-note input,
 form.create-note textarea {
     width: 100%;
-    /* border: none; */
-    outline: none;
+    border: none;
     padding: 4px;
+    outline: none;
+    resize: none;
+}
+
+form.create-note input {
+    text-align: center;
+}
+
+form.create-note button {
+    position: absolute;
+    bottom: -20px;
+    right: 20px;
+    background: #f5ba13;
+}
+
+form.create-note button:hover {
+    background: #ebaf0a
+}
+
+.note {
+    width: 200px;
+    background-color: #fff1c9;
+    border-radius: 7px;
+    box-shadow: 0 2px 5px #ccc;
+    margin: 16px;
+    padding: 10px;
+    height: 100px;
+
 }
