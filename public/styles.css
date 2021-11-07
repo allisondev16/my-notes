@@ -55,6 +55,33 @@ form.create-note button:hover {
     box-shadow: 0 2px 5px #ccc;
     margin: 16px;
     padding: 10px;
-    height: 100px;
+    min-height: 100px;
+    position: relative;
+}
 
+.note .deleteIcon {
+    cursor: pointer;
+    background: none;
+    border: none;
+    position: absolute;
+    bottom: 5px;
+    right: 5px;
+}
+
+.note .editIcon {
+    cursor: pointer;
+    background: none;
+    border: none;
+    position: absolute;
+    bottom: 5px;
+    right: 29px;
+}
+
+.note button {
+    opacity: 0.5;
+    transition: opacity 200ms ease-in-out;
+}
+
+.note button:hover {
+    opacity: 1;
 }

@@ -2,6 +2,9 @@
 
 - Learned that I can select :hov state in Chrome developer tools to show the :hover styles and other states as well.
 
+- CSS float can also be used in layouting with attributes such as left and right.
+
+- The destructuring assignment of JavaScript ES6 applies to the useState of React. 
 
 # Getting Started with Create React App
 
