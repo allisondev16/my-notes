@@ -14,12 +14,13 @@ function TextArea() {
     }
 
     // to be continued
-    function handleChange(event) {
+    function handleChange(event){
         const { name, value } = event.target;
+
         setNote(prevValue => {
-            return {
-                ...prevValue, [name]: value
-            };
+            return (
+                {...prevValue, [name]: value}
+            );
         });
     }
 
