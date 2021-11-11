@@ -4,7 +4,9 @@
 
 - CSS float can also be used in layouting with attributes such as left and right.
 
-- The destructuring assignment of JavaScript ES6 applies to the useState of React. 
+- The destructuring assignment of JavaScript ES6 applies to the useState of React.
+
+- React controlled and uncontrolled component. In a controlled component, form data is handled by a React component. The alternative is uncontrolled components, where form data is handled by the DOM itself.
 
 # Getting Started with Create React App
 
