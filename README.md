@@ -3,10 +3,24 @@
 - Learned that I can select :hov state in Chrome developer tools to show the :hover styles and other states as well.
 
 - CSS float can also be used in layouting with attributes such as left and right.
+```css
+float: left;
+```
 
 - The destructuring assignment of JavaScript ES6 applies to the useState of React.
 
 - React controlled and uncontrolled component. In a controlled component, form data is handled by a React component. The alternative is uncontrolled components, where form data is handled by the DOM itself.
+
+- Using map Array method with ES6 syntax:
+```JSX
+{notes.map((note, index) => {
+        return (<Note
+          key={index}
+          title={note.title}
+          content={note.content}
+        />)
+      })}
+```
 
 # Getting Started with Create React App
 

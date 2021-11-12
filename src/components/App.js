@@ -5,12 +5,11 @@ import React, { useState } from 'react';
 
 function App() {
 
-  const [notes, setNotes] = useState();
+  const [notes, setNotes] = useState([]);
 
-  // to be continued
-  function addNote(newNote){
+  function addNote(newNote) {
     setNotes(prevValue => {
-      return {...prevValue, newNote};
+      return [...prevValue, newNote];
     })
   }
 
@@ -18,10 +17,17 @@ function App() {
   return (
     <div>
       <Header />
-      <TextArea 
+      <TextArea
         onAdd={addNote}
       />
-      <Note />
+      {notes.map((note, index) => {
+        return (<Note
+          key={index}
+          title={note.title}
+          content={note.content}
+        />)
+      })}
+
     </div>
   );
 }

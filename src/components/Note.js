@@ -2,11 +2,11 @@ import React from "react";
 import DeleteOutlineIcon from '@mui/icons-material/DeleteOutline';
 import EditIcon from '@mui/icons-material/Edit';
 
-function Note() {
+function Note(prop) {
     return (
         <div className="note">
-            <h1>{}</h1>
-            <p>{}</p>
+            <h1>{prop.title}</h1>
+            <p>{prop.content}</p>
             <button className="deleteIcon">
                 <DeleteOutlineIcon />
             </button>

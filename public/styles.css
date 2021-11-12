@@ -57,6 +57,7 @@ form.create-note button:hover {
     padding: 10px;
     min-height: 100px;
     position: relative;
+    float: left;
 }
 
 .note .deleteIcon {
