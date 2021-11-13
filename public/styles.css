@@ -60,6 +60,12 @@ form.create-note button:hover {
     float: left;
 }
 
+.note h1 {
+    font-size: 16px;
+    font-weight: 700;
+    text-align: center;
+}
+
 .note .deleteIcon {
     cursor: pointer;
     background: none;

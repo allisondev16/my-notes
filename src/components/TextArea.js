@@ -9,45 +9,51 @@ function TextArea(prop) {
         content: ""
     });
 
-    function submitNote(event) {
+    const [clicked, setClicked] = useState(false);
+
+    function submitNote() {
         prop.onAdd(note);
         setNote({
             title: "",
-            content: ""
+            content: "",
         });
     }
 
-    // to be continued
     function handleChange(event){
         const { name, value } = event.target;
 
         setNote(prevValue => {
             return (
-                {...prevValue, [name]: value}
+                {...prevValue, [name]: value, }
             );
         });
     }
 
+    function handleClick(){
+        setClicked(true);
+    }
+
     return (
         <form className="create-note">
-            <input
+            {clicked && <input
                 name="title"
                 placeholder="Title"
                 value={note.title}
                 onChange={handleChange}
-            />
+            />}
             <textarea
                 name="content"
                 placeholder="Take a note..."
-                rows="3"
+                rows={clicked ? "3" : "1"}
                 value={note.content}
                 onChange={handleChange}
+                onClick={handleClick}
             />
-            <Zoom in="true">
-                <Fab size="small" color="primary" aria-label="add" onClick={submitNote}>
+            {clicked && <Zoom in="true">
+                <Fab size="small" color="primary" aria-label="add" onClick={submitNote} disabled={note.content?false:true}>
                     <AddIcon />
                 </Fab>
-            </Zoom>
+            </Zoom>}
         </form>
 
 

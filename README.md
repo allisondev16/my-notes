@@ -22,6 +22,11 @@ float: left;
       })}
 ```
 
+- JavaScript Array methods Map and Filter
+
+- The attribute "disabled" for button element or the Fab component of MUI can be set using conditional rendering. The button is disabled until the text is written in the text area on input fields.
+
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
