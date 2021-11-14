@@ -26,6 +26,13 @@ float: left;
 
 - The attribute "disabled" for button element or the Fab component of MUI can be set using conditional rendering. The button is disabled until the text is written in the text area on input fields.
 
+- The attribute "defaultValue" for the input element renders the value.
+
+- Using "inherit" as value in CSS to inherit the style of the parent element.
+
+- Using width: 100% to center the element with text-align center.
+
+
 
 # Getting Started with Create React App
 

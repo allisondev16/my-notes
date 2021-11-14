@@ -58,6 +58,7 @@ form.create-note button:hover {
     min-height: 100px;
     position: relative;
     float: left;
+    transition: background-color 300ms ease-in-out;
 }
 
 .note h1 {
@@ -91,4 +92,38 @@ form.create-note button:hover {
 
 .note button:hover {
     opacity: 1;
+}
+
+.note .deleteIcon:hover{
+    color: white;
+    opacity: 1;
+    background-color: red;
+    height: 24px;
+    bottom: 9px;
+    border-radius: 50%;
+}
+
+.note input {
+    width: 100%;
+}
+
+.note .title {
+    border: none;
+    background-color: inherit;
+    outline: none;
+    font-size: 16px;
+    font-weight: 400;
+    text-align: center;
+}
+
+.note .content {
+    border: none;
+    background-color: inherit;
+    outline: none;
+    font-size: 16px;
+    font-weight: 400;
+}
+
+.note.noteEditable {
+    background-color: #94DAFF;
 }
