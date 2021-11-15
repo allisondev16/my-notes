@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Zoom, Fab } from '@mui/material';
 import AddIcon from '@mui/icons-material/Add';
 
-function TextArea(prop) {
+function TextArea(props) {
 
     const [note, setNote] = useState({
         title: "",
@@ -12,7 +12,7 @@ function TextArea(prop) {
     const [clicked, setClicked] = useState(false);
 
     function submitNote() {
-        prop.onAdd(note);
+        props.onAdd(note);
         setNote({
             title: "",
             content: "",

@@ -21,6 +21,11 @@ function App() {
     })
   }
 
+  function saveEditedNote(editedNote, id) {
+    notes[id] = editedNote;
+    setNotes(notes);
+  }
+
 
   return (
     <div>
@@ -35,6 +40,7 @@ function App() {
           title={note.title}
           content={note.content}
           onDelete={deleteNote}
+          onSave={saveEditedNote}
         />)
       })}
 

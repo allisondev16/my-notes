@@ -32,6 +32,8 @@ float: left;
 
 - Using width: 100% to center the element with text-align center.
 
+- I'm proud of initializing the title and content of a note component, this is needed in case if you only edit the title or content and not causing a initialized blank text.
+
 
 
 # Getting Started with Create React App

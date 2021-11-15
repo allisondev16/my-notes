@@ -4,20 +4,32 @@ import EditIcon from '@mui/icons-material/Edit';
 import SaveIcon from '@mui/icons-material/Save';
 import CloseIcon from '@mui/icons-material/Close';
 
-function Note(prop) {
+function Note(props) {
 
     const [editable, setEditable] = useState(false)
+    const [editedNote, setEditedNote] = useState({
+        title: props.title,
+        content: props.content
+    })
 
     function deleteNote() {
-        prop.onDelete(prop.id);
+        props.onDelete(props.id);
     }
 
     function handleEdit() {
         setEditable(prevValue => { return !prevValue });
     }
 
-    function handleSave() {
+    function handleChange(event) {
+        const {name, value} = event.target
         
+        setEditedNote(prevValue => {
+            return {...prevValue, [name]:value};
+        })
+    }   
+
+    function handleSave() {
+        props.onSave(editedNote, props.id);
     }
 
     return (
@@ -26,13 +38,15 @@ function Note(prop) {
             <input className="title"
                 name="title"
                 placeholder="Title"
-                defaultValue={prop.title}
+                defaultValue={props.title}
+                onChange={handleChange}
             />
 
             <input className="content"
                 name="content"
                 placeholder="Take a note..."
-                defaultValue={prop.content}
+                defaultValue={props.content}
+                onChange={handleChange}
             />
 
             <button className="deleteIcon" onClick={handleEdit}>
@@ -44,8 +58,8 @@ function Note(prop) {
         </div> :
 
             <div className="note">
-                <h1>{prop.title}</h1>
-                <p>{prop.content}</p>
+                <h1>{props.title}</h1>
+                <p>{props.content}</p>
                 <button className="deleteIcon" onClick={deleteNote}>
                     <DeleteOutlineIcon />
                 </button>
