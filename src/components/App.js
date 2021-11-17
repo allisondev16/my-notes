@@ -1,15 +1,11 @@
 import Header from './Header';
 import TextArea from './TextArea';
 import Note from './Note';
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 
 function App() {
 
   const [notes, setNotes] = useState([]);
-
-  useEffect(()=>{
-    setNotes(notes);
-  }, [notes])
 
   function addNote(newNote) {
     setNotes(prevValue => {
@@ -26,7 +22,16 @@ function App() {
   }
 
   function saveEditedNote(editedNote, id) {
-    notes[id] = editedNote;
+    
+    setNotes(prevValue => {
+      return [...prevValue, editedNote];
+    })
+    // setNotes(prevValue => {
+    //   prevValue[id] = editedNote;
+    //   return prevValue;
+    // })
+    // console.log(notes);
+    
   }
 
 
