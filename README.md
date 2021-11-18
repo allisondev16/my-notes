@@ -24,16 +24,37 @@ float: left;
 
 - JavaScript Array methods Map and Filter
 
-- The attribute "disabled" for button element or the Fab component of MUI can be set using conditional rendering. The button is disabled until the text is written in the text area on input fields.
+- The attribute `disabled` for button element or the Fab component of MUI can be set using conditional rendering. The button is disabled until the text is written in the text area on input fields.
 
-- The attribute "defaultValue" for the input element renders the value.
+- The attribute `defaultValue` for the input element renders the value.
 
-- Using "inherit" as value in CSS to inherit the style of the parent element.
+- Using `inherit` as value in CSS to inherit the style of the parent element.
 
 - Using width: 100% to center the element with text-align center.
 
 - I'm proud of initializing the title and content of a note component, this is needed in case if you only edit the title or content and not causing a initialized blank text.
 
+- I got stuck in updating the value of an element in an array using the useState hook, but I was able to resolve it with the help of stack overflow. The resolution is that the array should be spread first:
+https://stackoverflow.com/questions/61302689/how-to-update-an-array-in-usestate-using-its-index-in-react-native/61302773#61302773?newreg=b2e7e060df8b47828a022964c979e2fb
+
+Before (the value of state was not updated):
+```JSX
+setNotes(prevValue => {
+      prevValue[id] = editedNote;
+      return prevValue;
+    })
+```
+
+After (the value of state was updated immediately):
+```JSX
+setNotes(prevValue => {
+      const array = [...prevValue];
+      array[id] = editedNote;
+      return array;
+    });
+```
+
+- I used the component `TextareaAutosize` of MUI to autoresize the textarea element.
 
 
 # Getting Started with Create React App

@@ -22,15 +22,12 @@ function App() {
   }
 
   function saveEditedNote(editedNote, id) {
-    
+
     setNotes(prevValue => {
-      return [...prevValue, editedNote];
-    })
-    // setNotes(prevValue => {
-    //   prevValue[id] = editedNote;
-    //   return prevValue;
-    // })
-    // console.log(notes);
+      const array = [...prevValue];
+      array[id] = editedNote;
+      return array;
+    });
     
   }
 

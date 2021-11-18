@@ -3,6 +3,7 @@ import DeleteOutlineIcon from '@mui/icons-material/DeleteOutline';
 import EditIcon from '@mui/icons-material/Edit';
 import SaveIcon from '@mui/icons-material/Save';
 import CloseIcon from '@mui/icons-material/Close';
+import TextareaAutosize from '@mui/material/TextareaAutosize';
 
 function Note(props) {
 
@@ -43,30 +44,33 @@ function Note(props) {
                 onChange={handleChange}
             />
 
-            <input className="content"
+            <TextareaAutosize className="content"
                 name="content"
                 placeholder="Take a note..."
                 defaultValue={props.content}
                 onChange={handleChange}
             />
-
+            
             <button className="deleteIcon" onClick={handleEdit}>
                 <CloseIcon />
             </button>
             <button className="editIcon" onClick={handleSave}>
                 <SaveIcon />
             </button>
+            
         </div> :
 
             <div className="note">
                 <h1>{props.title}</h1>
                 <p>{props.content}</p>
+                
                 <button className="deleteIcon" onClick={deleteNote}>
                     <DeleteOutlineIcon />
                 </button>
                 <button className="editIcon" onClick={handleEdit}>
                     <EditIcon />
                 </button>
+                
             </div>
     )
 }

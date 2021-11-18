@@ -44,7 +44,7 @@ function TextArea(props) {
             <textarea
                 name="content"
                 placeholder="Take a note..."
-                rows={clicked ? "3" : "1"}
+                rows={clicked ? "5" : "1"}
                 value={note.content}
                 onChange={handleChange}
                 onClick={handleClick}
