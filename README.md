@@ -35,7 +35,7 @@ float: left;
 - I'm proud of initializing the title and content of a note component, this is needed in case if you only edit the title or content and not causing a initialized blank text.
 
 - I got stuck in updating the value of an element in an array using the useState hook, but I was able to resolve it with the help of stack overflow. The resolution is that the array should be spread first:
-https://stackoverflow.com/questions/61302689/how-to-update-an-array-in-usestate-using-its-index-in-react-native/61302773#61302773?newreg=b2e7e060df8b47828a022964c979e2fb
+(https://stackoverflow.com/questions/61302689/how-to-update-an-array-in-usestate-using-its-index-in-react-native/61302773#61302773?newreg=b2e7e060df8b47828a022964c979e2fb)
 
 Before (the value of state was not updated):
 ```JSX
@@ -55,6 +55,11 @@ setNotes(prevValue => {
 ```
 
 - I used the component `TextareaAutosize` of MUI to autoresize the textarea element.
+
+
+- Mongoose is a MongoDB object modeling tool designed to work in an asynchronous environment. Mongoose supports both promises and callbacks. (https://www.npmjs.com/package/mongoose)
+
+- Not every single function that takes an argument is asynchronous, but in general, most function that takes function argument are going to be asynchronous. (https://www.youtube.com/watch?v=Kpn2ajSa92c)
 
 
 # Getting Started with Create React App
