@@ -61,6 +61,31 @@ setNotes(prevValue => {
 
 - Not every single function that takes an argument is asynchronous, but in general, most function that takes function argument are going to be asynchronous. (https://www.youtube.com/watch?v=Kpn2ajSa92c)
 
+- To understand the difference between `express()` and `express.Router()`, `express()` is for the main app and `express.Router()` is for the mini app. (https://stackoverflow.com/questions/28305120/differences-between-express-router-and-app-get)
+
+- The `res.json()` function sends a JSON response. This method sends a response (with the correct content-type) that is the parameter converted to a JSON string using the JSON.stringify() method. (https://www.geeksforgeeks.org/express-js-res-json-function/)
+Syntax:
+```JS
+res.json( [body] )
+```
+Parameters: The body parameter is the body which is to be sent in the response.
+Return Value: It returns an Object.
+
+- The `then()` method returns a Promise. It takes up to two arguments: callback functions for the success and failure cases of the Promise. (https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise/then)
+Syntax:
+```JS
+p.then(onFulfilled[, onRejected]);
+
+p.then(value => {
+  // fulfillment
+}, reason => {
+  // rejection
+});
+```
+
+- A callback function is a function passed into another function as an argument, which is then invoked inside the outer function to complete some kind of routine or action. (https://developer.mozilla.org/en-US/docs/Glossary/Callback_function)
+
+- Mongoose provides a straight-forward, schema-based solution to model your application data. It includes built-in type casting, validation, query building, business logic hooks and more, out of the box. (https://mongoosejs.com/)
 
 # Getting Started with Create React App
 
