@@ -10,13 +10,28 @@ function App() {
 
   useEffect(() => {
 
-    axios.post('/user/notes', {
-      username: "User",
-      notes: notes
-    })
-      .then(response => console.log(response));
-      
+    async function fetchData() {
+
+      const req = await axios.get('/user/notes');
+
+      // App is designed for one user, cookie22. Multiple users to be implemented soon.
+      const userNotes = req.data.find(user => user.username === "cookie22");
+
+      if (userNotes) {
+        setNotes(userNotes.notes);
+      } else {
+        axios.post('/user/notes', {
+          username: "newUser",
+          notes: []
+        })
+          .then(response => console.log(response));
+      }
+    }
+
+    fetchData();
+
   }, [notes])
+  
 
   function addNote(newNote) {
     setNotes(prevValue => {

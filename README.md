@@ -90,6 +90,7 @@ p.then(value => {
 - CORS is a browser security feature that restricts cross-origin HTTP requests with other servers and specifies which domains access your resources. (https://www.section.io/engineering-education/how-to-use-cors-in-nodejs-with-express/) 
   - CORS middleware is not needed for this app as the HTTP requests is the same server.
 
+- Making asynchronous programming easier with async and await. (https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Asynchronous/Async_await)
 
 # Getting Started with Create React App
 
