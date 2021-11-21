@@ -1,21 +1,26 @@
 import Header from './Header';
 import TextArea from './TextArea';
 import Note from './Note';
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 
 function App() {
 
   const [notes, setNotes] = useState([]);
 
-  function addNote(newNote) {
-    setNotes(prevValue => {
-      return [...prevValue, newNote];
-    })
+  useEffect(() => {
 
     axios.post('/user/notes', {
       username: "User",
       notes: notes
+    })
+      .then(response => console.log(response));
+      
+  }, [notes])
+
+  function addNote(newNote) {
+    setNotes(prevValue => {
+      return [...prevValue, newNote];
     });
   }
 
