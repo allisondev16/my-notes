@@ -2,6 +2,7 @@ import Header from './Header';
 import TextArea from './TextArea';
 import Note from './Note';
 import React, { useState } from 'react';
+import axios from 'axios';
 
 function App() {
 
@@ -11,6 +12,11 @@ function App() {
     setNotes(prevValue => {
       return [...prevValue, newNote];
     })
+
+    axios.post('/user/notes', {
+      username: "User",
+      notes: notes
+    });
   }
 
   function deleteNote(id) {

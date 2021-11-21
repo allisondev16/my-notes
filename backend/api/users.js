@@ -1,7 +1,7 @@
-import { Router } from 'express';
-const router = Router();
+const express = require('express');
+const router = express.Router()
 
-import User from '../models/user';
+const User = require('../models/user');
 
 router.get('/', (req, res) => {
     User.find()
@@ -21,4 +21,4 @@ router.post('/', (req, res) => {
     });
 });
 
-export default router;
+module.exports = router
