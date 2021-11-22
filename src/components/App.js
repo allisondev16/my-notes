@@ -7,15 +7,16 @@ import axios from 'axios';
 function App() {
 
   const [notes, setNotes] = useState([]);
+  // App is designed for one user, cookie22. Multiple users to be implemented soon.
+  const userName = "cookie22";
+
 
   useEffect(() => {
-
     async function fetchData() {
 
       const req = await axios.get('/user/notes');
   
-      // App is designed for one user, cookie22. Multiple users to be implemented soon.
-      const userNotes = req.data.find(user => user.username === "cookie22");
+      const userNotes = req.data.find(user => user.username === userName);
   
       if (userNotes) {
         setNotes(userNotes.notes);
@@ -29,8 +30,14 @@ function App() {
     }
   
     fetchData();
+  }, []);
 
-  }, [notes])
+  useEffect(() => {
+    axios.put('/user/notes', {
+      username: userName,
+      notes: notes
+    }).then(res => console.log(res));
+  }, [notes]);
 
 
   function addNote(newNote) {

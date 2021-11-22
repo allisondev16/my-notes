@@ -92,6 +92,13 @@ p.then(value => {
 
 - Making asynchronous programming easier with async and await. (https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Asynchronous/Async_await)
 
+- For the  `useEffect()` to render only once, add `[]` as the 2nd parameter.
+```JSX
+useEffect(() => {
+  // do something once
+  }, [])
+```
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
