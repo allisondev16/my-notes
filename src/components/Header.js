@@ -6,6 +6,9 @@ function Header() {
             <h1>
                 Notes
             </h1>
+            <a>
+                Login
+            </a>
         </header>
     )
 }
