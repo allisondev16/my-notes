@@ -1,8 +1,10 @@
 import Header from './Header';
 import TextArea from './TextArea';
 import Note from './Note';
+import Login from './Login';
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import { Switch, Route, Link } from 'react-router-dom';
 
 function App() {
 
@@ -15,9 +17,9 @@ function App() {
     async function fetchData() {
 
       const req = await axios.get('/user/notes');
-  
+
       const userNotes = req.data.find(user => user.username === userName);
-  
+
       if (userNotes) {
         setNotes(userNotes.notes);
       } else {
@@ -28,7 +30,7 @@ function App() {
           .then(response => console.log(response));
       }
     }
-  
+
     fetchData();
   }, []);
 
@@ -61,26 +63,29 @@ function App() {
       array[id] = editedNote;
       return array;
     });
-    
+
   }
 
 
   return (
     <div>
       <Header />
-      <TextArea
-        onAdd={addNote}
-      />
-      {notes.map((note, index) => {
-        return (<Note
-          key={index}
-          id={index}
-          title={note.title}
-          content={note.content}
-          onDelete={deleteNote}
-          onSave={saveEditedNote}
-        />)
-      })}
+      <Switch>
+      {/* <Route exact path={'/'} component={} */}
+        <TextArea
+          onAdd={addNote}
+        />
+        {notes.map((note, index) => {
+          return (<Note
+            key={index}
+            id={index}
+            title={note.title}
+            content={note.content}
+            onDelete={deleteNote}
+            onSave={saveEditedNote}
+          />)
+        })}
+      </Switch>
 
     </div>
   );

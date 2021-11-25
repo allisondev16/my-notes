@@ -1,4 +1,5 @@
 import React from "react";
+import { Switch, Route, Link } from 'react-router-dom';
 
 function Header() {
     return (
@@ -6,9 +7,9 @@ function Header() {
             <h1>
                 Notes
             </h1>
-            <a>
+            <Link to={'/login'}>
                 Login
-            </a>
+            </Link>
         </header>
     )
 }
