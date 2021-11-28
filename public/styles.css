@@ -21,8 +21,14 @@ header {
     justify-content: space-between;
 }
 
-header h1 {
-    font-size: 28px;
+header a {
+    
+    text-decoration: none;
+    color: white;
+}
+
+header .title {
+    font-size: 26px;
 }
 
 form.create-note {
@@ -97,7 +103,7 @@ form.create-note button:hover {
 
 .note button {
     opacity: 0.5;
-    transition: opacity 200ms ease-in-out;
+    /* transition: opacity 200ms ease-in-out; */
 }
 
 .note button:hover {

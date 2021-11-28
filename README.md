@@ -99,6 +99,10 @@ useEffect(() => {
   }, [])
 ```
 
+- react-router-dom (https://www.youtube.com/watch?v=EmUa_tcSM-k&list=PL4cUxeGkcC9gZD-Tvwfod2gaISzfRiP9d&index=22)
+  - I used v6 instead of the v5 in the YouTube tutorial and I discovered that `Switch` is replaced by `Routes`. Also, `exact` is not needed anymore in Route declaration. (https://stackoverflow.com/questions/63124161/attempted-import-error-switch-is-not-exported-from-react-router-dom)
+
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).

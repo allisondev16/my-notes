@@ -1,16 +1,19 @@
 import React from "react";
-import { Switch, Route, Link } from 'react-router-dom';
+import { Link, Outlet } from 'react-router-dom';
 
 function Header() {
     return (
-        <header>
-            <h1>
-                Notes
-            </h1>
-            <Link to={'/login'}>
-                Login
-            </Link>
-        </header>
+        <div>
+            <header>
+                <Link to={'/'} className="title">
+                    Notes
+                </Link>
+                <Link to={'/login'}>
+                    Login
+                </Link>
+            </header>
+            <Outlet />
+        </div>
     )
 }
 

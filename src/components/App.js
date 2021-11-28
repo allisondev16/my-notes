@@ -4,7 +4,7 @@ import Note from './Note';
 import Login from './Login';
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import { Switch, Route, Link } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 
 function App() {
 
@@ -68,26 +68,33 @@ function App() {
 
 
   return (
-    <div>
-      <Header />
-      <Switch>
-      {/* <Route exact path={'/'} component={} */}
-        <TextArea
-          onAdd={addNote}
-        />
-        {notes.map((note, index) => {
-          return (<Note
-            key={index}
-            id={index}
-            title={note.title}
-            content={note.content}
-            onDelete={deleteNote}
-            onSave={saveEditedNote}
-          />)
-        })}
-      </Switch>
+    <Router>
+      {/* <Header /> */}
+      <Routes>
+        <Route path="/" element={<Header />}>
+          <Route index element={
+            <div>
 
-    </div>
+              <TextArea onAdd={addNote} />
+
+              {notes.map((note, index) => {
+                return (<Note
+                  key={index}
+                  id={index}
+                  title={note.title}
+                  content={note.content}
+                  onDelete={deleteNote}
+                  onSave={saveEditedNote}
+                />)
+              })}
+
+            </div>
+          } />
+          <Route path="login" element={<Login />} />
+        </Route>
+      </Routes>
+
+    </Router>
   );
 }
 
