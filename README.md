@@ -102,6 +102,20 @@ useEffect(() => {
 - react-router-dom (https://www.youtube.com/watch?v=EmUa_tcSM-k&list=PL4cUxeGkcC9gZD-Tvwfod2gaISzfRiP9d&index=22)
   - I used v6 instead of the v5 in the YouTube tutorial and I discovered that `Switch` is replaced by `Routes`. Also, `exact` is not needed anymore in Route declaration. (https://stackoverflow.com/questions/63124161/attempted-import-error-switch-is-not-exported-from-react-router-dom)
 
+- StrictMode is a tool for highlighting potential problems in an application. (https://reactjs.org/docs/strict-mode.html)
+```JSX
+<React.StrictMode>
+    <App />
+</React.StrictMode>
+```
+
+- You can nest the `<input>` directly inside the `<label>`, in which case the `for` and `id` attributes are not needed because the association is implicit:
+```HTML
+<label>Do you like peas?
+  <input type="checkbox" name="peas">
+</label>
+```
+(https://developer.mozilla.org/en-US/docs/Web/HTML/Element/label)
 
 # Getting Started with Create React App
 

@@ -64,6 +64,34 @@ form.create-note button:hover {
     background: #ebaf0a
 }
 
+form.login {
+    width: 265px;
+}
+
+form.login input {
+    padding: 10px;
+    width: 265px;
+}
+
+form.login input[type="text"] {
+    margin-bottom: 10px;
+}
+
+form.login input[type="submit"] {
+    margin: 16px 0;
+    width: 265px;
+}
+
+.loginPage {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.loginPage a {
+    font-size: 12px;
+}
+
 .note {
     width: 250px;
     background-color: #fff1c9;
