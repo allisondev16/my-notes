@@ -4,6 +4,7 @@ const Schema = mongoose.Schema;
 // Create Model
 const userSchema = new Schema({
     username: String,
+    password: String,
     notes: [
         {
             title: String,
