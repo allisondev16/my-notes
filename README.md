@@ -117,6 +117,13 @@ useEffect(() => {
 ```
 (https://developer.mozilla.org/en-US/docs/Web/HTML/Element/label)
 
+- `event.preventDefault()` method cancels the event if it is cancelable, meaning that the default action that belongs to the event will not occur. (https://www.w3schools.com/jsref/event_preventdefault.asp)
+
+- `useNavigate` is a new hook introduced in React Router v6 and has replaced useHistory. (https://dev.to/salehmubashar/usenavigate-tutorial-react-js-aop) 
+  - Uses:
+    - Go to the previous or next pages
+    - Redirect user to a specific Url
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).

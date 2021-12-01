@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 function Signup() {
 
@@ -7,6 +8,8 @@ function Signup() {
         username: "",
         password: ""
     })
+
+    const navigate = useNavigate();
 
     function handleChange(event) {
         const {name, value} = event.target;
@@ -23,7 +26,7 @@ function Signup() {
             notes: []
         });
         event.preventDefault();
-        
+        navigate('/');
     }
 
     return (
@@ -39,10 +42,8 @@ function Signup() {
                 </label>
                 <input type="submit" name="SignUp" value="Sign Up" onClick={handleSignUp} />
             </form>
-
-            
         </div>
-    )
+    );
 }
 
 export default Signup;
