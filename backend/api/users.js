@@ -22,14 +22,20 @@ router.post('/', (req, res) => {
 });
 
 router.put("/", (req, res) => {
-    const query = { username: "cookie22" };
-    User.findOneAndUpdate(query, req.body, (err, data) => {
-        if (err) {
-            res.status(500).send(err);
-        } else {
-            res.status(201).send(data);
-        }
-    });
+    const filter = { username: req.body.username };
+    const update = { notes: req.body.notes };
+
+    if (req.body.username == "") {
+        // do not save
+    } else {
+        User.findOneAndUpdate(filter, update, (err, data) => {
+            if (err) {
+                res.status(500).send(err);
+            } else {
+                res.status(201).send(data);
+            }
+        });
+    }
 });
 
 module.exports = router

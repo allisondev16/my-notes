@@ -10,34 +10,33 @@ import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 function App() {
 
   const [notes, setNotes] = useState([]);
-  // App is designed for one user, cookie22. Multiple users to be implemented soon.
-  const userName = "cookie22";
 
+  const [username, setUser] = useState("");
 
   useEffect(() => {
     async function fetchData() {
 
       const req = await axios.get('/user/notes');
 
-      const userNotes = req.data.find(user => user.username === userName);
+      const userNotes = req.data.find(user => user.username === username);
 
       if (userNotes) {
         setNotes(userNotes.notes);
+        console.log("user found: "+userNotes.username);
       } else {
-        axios.post('/user/notes', {
-          username: "newUser",
-          notes: []
-        })
-          .then(response => console.log(response));
+        console.log("user not found");
+        axios.post('user/notes', {
+          username: username
+        });
       }
     }
 
     fetchData();
-  }, []);
+  }, [username]);
 
   useEffect(() => {
     axios.put('/user/notes', {
-      username: userName,
+      username: username,
       notes: notes
     }).then(res => console.log(res));
   }, [notes]);
@@ -67,12 +66,18 @@ function App() {
 
   }
 
+  function changeUser(username) {
+    setUser(username);
+  }
+
+  function handleLogout() {
+    setUser("");
+  }
 
   return (
     <Router>
-      {/* <Header /> */}
       <Routes>
-        <Route path="/" element={<Header />}>
+        <Route path="/" element={<Header user={username} onClick={handleLogout} />}>
           <Route index element={
             <div>
 
@@ -91,8 +96,8 @@ function App() {
 
             </div>
           } />
-          <Route path="login" element={<Login />} />
-          <Route path="signup" element={<Signup />} />
+          <Route path="login" element={<Login onLogin={changeUser} />} />
+          <Route path="signup" element={<Signup onSignup={changeUser} />} />
         </Route>
       </Routes>
 

@@ -2,31 +2,27 @@ import React, { useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 
-function Signup() {
+function Signup(props) {
 
-    const [credential, setUsername] = useState({
+    const [credential, setCredential] = useState({
         username: "",
         password: ""
-    })
+    });
 
     const navigate = useNavigate();
 
     function handleChange(event) {
         const {name, value} = event.target;
         
-        setUsername(prevValue => {
+        setCredential(prevValue => {
             return {...prevValue, [name]: value};
         });
     }
 
     function handleSignUp(event) {
-        axios.post('/user/notes', {
-            username: credential.username,
-            password: credential.password,
-            notes: []
-        });
         event.preventDefault();
         navigate('/');
+        props.onSignup(credential.username);
     }
 
     return (
