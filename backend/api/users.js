@@ -25,17 +25,14 @@ router.put("/", (req, res) => {
     const filter = { username: req.body.username };
     const update = { notes: req.body.notes };
 
-    if (req.body.username == "") {
-        // do not save
-    } else {
-        User.findOneAndUpdate(filter, update, (err, data) => {
-            if (err) {
-                res.status(500).send(err);
-            } else {
-                res.status(201).send(data);
-            }
-        });
-    }
+    User.findOneAndUpdate(filter, update, (err, data) => {
+        if (err) {
+            res.status(500).send(err);
+        } else {
+            res.status(201).send(data);
+        }
+    });
+
 });
 
 module.exports = router

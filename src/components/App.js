@@ -11,23 +11,33 @@ function App() {
 
   const [notes, setNotes] = useState([]);
 
-  const [username, setUser] = useState("");
+  const [username, setUser] = useState(null);
+
+  const [isLoaded, setIsloaded] = useState(false);
 
   useEffect(() => {
     async function fetchData() {
 
-      const req = await axios.get('/user/notes');
+      if (username != null) {
+        const req = await axios.get('/user/notes');
 
-      const userNotes = req.data.find(user => user.username === username);
+        const userNotes = req.data.find(user => user.username === username);
 
-      if (userNotes) {
-        setNotes(userNotes.notes);
-        console.log("user found: "+userNotes.username);
-      } else {
-        console.log("user not found");
-        axios.post('user/notes', {
-          username: username
-        });
+        if (userNotes) {
+          setNotes(userNotes.notes);
+          setIsloaded(true);
+          console.log("user found: " + userNotes.username);
+        } else {
+          console.log("user not found");
+          axios.post('user/notes', {
+            username: username
+          });
+        }
+      } else if (username == null) {
+        setNotes([{
+          title: "Welcome to Notes by allison",
+          content: "Start by creating notes and you can edit and delete.\nLog in to save your notes!"
+        }]);
       }
     }
 
@@ -35,10 +45,15 @@ function App() {
   }, [username]);
 
   useEffect(() => {
-    axios.put('/user/notes', {
-      username: username,
-      notes: notes
-    }).then(res => console.log(res));
+    if (username != null) {
+      // user is logged in, then save every changes of user's notes array
+      axios.put('/user/notes', {
+        username: username,
+        notes: notes
+      }).then(res => console.log(res));
+    } else if (username == null) {
+      // if username is blank (not logged in), then do not save any changes of the notes array
+    }
   }, [notes]);
 
 
@@ -71,7 +86,8 @@ function App() {
   }
 
   function handleLogout() {
-    setUser("");
+    setUser(null);
+    setIsloaded(false);
   }
 
   return (
@@ -83,7 +99,9 @@ function App() {
 
               <TextArea onAdd={addNote} />
 
-              {notes.map((note, index) => {
+              {(isLoaded || !username) ? 
+              
+              notes.map((note, index) => {
                 return (<Note
                   key={index}
                   id={index}
@@ -92,7 +110,11 @@ function App() {
                   onDelete={deleteNote}
                   onSave={saveEditedNote}
                 />)
-              })}
+              }) :
+
+                "Loading..."
+
+              }
 
             </div>
           } />
