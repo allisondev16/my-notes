@@ -124,6 +124,8 @@ useEffect(() => {
     - Go to the previous or next pages
     - Redirect user to a specific Url
 
+- If you want to send something within request body with GET requests (Axios API), `params` won't work - and neither will `data`, as it's only taken into account for PUT, POST, DELETE, and PATCH requests. (https://stackoverflow.com/questions/46404051/send-object-with-axios-get-request)
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).

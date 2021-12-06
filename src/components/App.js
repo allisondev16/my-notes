@@ -85,6 +85,13 @@ function App() {
     setUser(username);
   }
 
+  //to be continued
+  async function signUp(username) {
+    const data = await axios.get('/user/notes');
+    console.log(data);
+    setUser(username);
+  }
+
   function handleLogout() {
     setUser(null);
     setIsloaded(false);
@@ -99,18 +106,18 @@ function App() {
 
               <TextArea onAdd={addNote} />
 
-              {(isLoaded || !username) ? 
-              
-              notes.map((note, index) => {
-                return (<Note
-                  key={index}
-                  id={index}
-                  title={note.title}
-                  content={note.content}
-                  onDelete={deleteNote}
-                  onSave={saveEditedNote}
-                />)
-              }) :
+              {(isLoaded || !username) ?
+
+                notes.map((note, index) => {
+                  return (<Note
+                    key={index}
+                    id={index}
+                    title={note.title}
+                    content={note.content}
+                    onDelete={deleteNote}
+                    onSave={saveEditedNote}
+                  />)
+                }) :
 
                 "Loading..."
 
@@ -119,7 +126,7 @@ function App() {
             </div>
           } />
           <Route path="login" element={<Login onLogin={changeUser} />} />
-          <Route path="signup" element={<Signup onSignup={changeUser} />} />
+          <Route path="signup" element={<Signup onSignup={signUp} />} />
         </Route>
       </Routes>
 
