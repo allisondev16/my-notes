@@ -19,21 +19,28 @@ function App() {
     async function fetchData() {
 
       if (username != null) {
+        // User is logged in
+
+        // get all the data in database
         const req = await axios.get('/user/notes');
 
-        const userNotes = req.data.find(user => user.username === username);
+        // filter the data by current user in the State Hook
+        const userNotes = req.data.find(userData => userData.username === username);
 
         if (userNotes) {
+          // If existing user, then get the user's existing data by State Hook
           setNotes(userNotes.notes);
           setIsloaded(true);
           console.log("user found: " + userNotes.username);
         } else {
-          console.log("user not found");
-          axios.post('user/notes', {
+          // If the user is not found in database, then create a user by post request
+          await axios.post('user/notes', {
             username: username
           });
+          setIsloaded(true);
         }
       } else if (username == null) {
+        // User is not logged in
         setNotes([{
           title: "Welcome to Notes by allison",
           content: "Start by creating notes and you can edit and delete.\nLog in to save your notes!"
@@ -85,10 +92,7 @@ function App() {
     setUser(username);
   }
 
-  //to be continued
-  async function signUp(username) {
-    const data = await axios.get('/user/notes');
-    console.log(data);
+  function signUp(username) {
     setUser(username);
   }
 

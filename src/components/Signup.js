@@ -1,28 +1,78 @@
-import React, { useState } from "react";
-import axios from "axios";
+import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import axios from 'axios';
 
 function Signup(props) {
 
     const [credential, setCredential] = useState({
         username: "",
-        password: ""
+        password: "",
+        verifyPassword: ""
     });
+
+    const [disableSubmit, setDisableSubmit] = useState("yes");
+
+    const [isPasswordVerified, setPasswordVerified]= useState(false);
 
     const navigate = useNavigate();
 
+    useEffect(() => {
+
+        if (credential.password === credential.verifyPassword) {
+            setPasswordVerified(true);
+        } else {
+            setPasswordVerified(false);
+        }
+
+
+        /****** Submit button is disabled until all three fields are filled ******/
+
+        // This code is flexible:
+        // const credentialArray = Object.values(credential);
+        // for (let index = 0; index < credentialArray.length; index++) {
+        //     if (credentialArray[index] === "") {
+        //         setDisableSubmit("yes");
+        //         break;
+        //     } else if (index === credentialArray.length-1) {
+        //         setDisableSubmit("");
+        //     } else {
+        //         continue;
+        //     }
+        // }
+
+        // OR
+
+        // This has shorter lines of code, but not flexible:
+        if (credential.username === "" || credential.password === "" || credential.verifyPassword === ""){
+            setDisableSubmit("yes");
+        } else {
+            setDisableSubmit("");
+        }
+
+    }, [credential]);
+
     function handleChange(event) {
-        const {name, value} = event.target;
-        
+        const { name, value } = event.target;
+
         setCredential(prevValue => {
-            return {...prevValue, [name]: value};
+            return { ...prevValue, [name]: value };
         });
     }
 
-    function handleSignUp(event) {
+    async function handleSignUp(event) {
         event.preventDefault();
-        navigate('/');
-        props.onSignup(credential.username);
+
+        const req = await axios.get('/user/notes');
+        const userIsExisting = req.data.find(userData => userData.username === credential.username);
+
+        if (userIsExisting) {
+            // render "Username already exists."
+            alert("Username already exists.");
+        } else {
+            // if user is new, then create a new user (handled by Effect Hook in App.js)
+            props.onSignup(credential.username);
+            navigate('/');
+        }
     }
 
     return (
@@ -30,13 +80,19 @@ function Signup(props) {
             <form className="login">
                 <label>
                     Username
-                    <input type="text" name="username" onChange={handleChange} />
+                    <input type="text" name="username" onChange={handleChange}/>
+                    <p>That username is taken. Try another.</p>
                 </label>
                 <label>
                     Password
                     <input type="password" name="password" onChange={handleChange} />
                 </label>
-                <input type="submit" name="SignUp" value="Sign Up" onClick={handleSignUp} />
+                <label>
+                    Verify Password
+                    <input type="password" name="verifyPassword" onChange={handleChange} validation={true} required/>
+                    {!isPasswordVerified && <p>Those passwords didn’t match. Try again.</p>}
+                </label>
+                <input type="submit" name="SignUp" value="Sign Up" onClick={handleSignUp} disabled={disableSubmit} />
             </form>
         </div>
     );

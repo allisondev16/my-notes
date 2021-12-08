@@ -109,6 +109,8 @@ useEffect(() => {
 </React.StrictMode>
 ```
 
+- The <label> tag in HTML is used to provide a usability improvement for mouse users i.e, if a user clicks on the text within the <label> element, it toggles the control. (https://www.geeksforgeeks.org/html-label-tag/)
+
 - You can nest the `<input>` directly inside the `<label>`, in which case the `for` and `id` attributes are not needed because the association is implicit:
 ```HTML
 <label>Do you like peas?
@@ -125,6 +127,8 @@ useEffect(() => {
     - Redirect user to a specific Url
 
 - If you want to send something within request body with GET requests (Axios API), `params` won't work - and neither will `data`, as it's only taken into account for PUT, POST, DELETE, and PATCH requests. (https://stackoverflow.com/questions/46404051/send-object-with-axios-get-request)
+
+- (React Router V6) `useNavigate()` may be used only in the context of a `<Router>` component.
 
 # Getting Started with Create React App
 
