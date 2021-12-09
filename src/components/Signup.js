@@ -12,18 +12,13 @@ function Signup(props) {
 
     const [disableSubmit, setDisableSubmit] = useState("yes");
 
-    const [isPasswordVerified, setPasswordVerified]= useState(false);
+    const [isPasswordVerified, setPasswordVerified] = useState(true);
+
+    const [isUsernameTaken, setIsUsernameTaken] = useState(false);
 
     const navigate = useNavigate();
 
     useEffect(() => {
-
-        if (credential.password === credential.verifyPassword) {
-            setPasswordVerified(true);
-        } else {
-            setPasswordVerified(false);
-        }
-
 
         /****** Submit button is disabled until all three fields are filled ******/
 
@@ -43,7 +38,7 @@ function Signup(props) {
         // OR
 
         // This has shorter lines of code, but not flexible:
-        if (credential.username === "" || credential.password === "" || credential.verifyPassword === ""){
+        if (credential.username === "" || credential.password === "" || credential.verifyPassword === "") {
             setDisableSubmit("yes");
         } else {
             setDisableSubmit("");
@@ -66,12 +61,26 @@ function Signup(props) {
         const userIsExisting = req.data.find(userData => userData.username === credential.username);
 
         if (userIsExisting) {
-            // render "Username already exists."
-            alert("Username already exists.");
+            // render "That username is taken. Try another."
+            setIsUsernameTaken(true);
+            // Check if password is verified
+            if (credential.password === credential.verifyPassword) {
+                setPasswordVerified(true);
+            } else {
+                setPasswordVerified(false);
+            }
         } else {
             // if user is new, then create a new user (handled by Effect Hook in App.js)
-            props.onSignup(credential.username);
-            navigate('/');
+            setIsUsernameTaken(false);
+            if (credential.password === credential.verifyPassword) {
+                // If password is verified, finish sign up
+                setPasswordVerified(true);
+                props.onSignup(credential.username);
+                navigate('/');
+            } else {
+                // If password is not verified, do not proceed to sign up
+                setPasswordVerified(false);
+            }
         }
     }
 
@@ -80,8 +89,8 @@ function Signup(props) {
             <form className="login">
                 <label>
                     Username
-                    <input type="text" name="username" onChange={handleChange}/>
-                    <p>That username is taken. Try another.</p>
+                    <input type="text" name="username" onChange={handleChange} />
+                    {isUsernameTaken && <p>That username is taken. Try another.</p>}
                 </label>
                 <label>
                     Password
@@ -89,7 +98,7 @@ function Signup(props) {
                 </label>
                 <label>
                     Verify Password
-                    <input type="password" name="verifyPassword" onChange={handleChange} validation={true} required/>
+                    <input type="password" name="verifyPassword" onChange={handleChange} validation={true} required />
                     {!isPasswordVerified && <p>Those passwords didn’t match. Try again.</p>}
                 </label>
                 <input type="submit" name="SignUp" value="Sign Up" onClick={handleSignUp} disabled={disableSubmit} />
