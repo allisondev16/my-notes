@@ -130,6 +130,8 @@ useEffect(() => {
 
 - (React Router V6) `useNavigate()` may be used only in the context of a `<Router>` component.
 
+- async await vs then (https://stackoverflow.com/questions/54495711/async-await-vs-then-which-is-the-best-for-performance)
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).

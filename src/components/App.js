@@ -31,13 +31,17 @@ function App() {
           // If existing user, then get the user's existing data by State Hook
           setNotes(userNotes.notes);
           setIsloaded(true);
-          console.log("user found: " + userNotes.username);
         } else {
           // If the user is not found in database, then create a user by post request
           await axios.post('user/notes', {
             username: username
           });
           setIsloaded(true);
+          // save the existing notes to the new account
+          axios.put('/user/notes', {
+            username: username,
+            notes: notes
+          }).then(res => console.log(res));
         }
       } else if (username == null) {
         // User is not logged in
@@ -52,13 +56,14 @@ function App() {
   }, [username]);
 
   useEffect(() => {
-    if (username != null) {
+    const currentUsername = username;
+    if (currentUsername != null) {
       // user is logged in, then save every changes of user's notes array
       axios.put('/user/notes', {
-        username: username,
+        username: currentUsername,
         notes: notes
       }).then(res => console.log(res));
-    } else if (username == null) {
+    } else if (currentUsername == null) {
       // if username is blank (not logged in), then do not save any changes of the notes array
     }
   }, [notes]);
