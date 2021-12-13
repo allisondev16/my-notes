@@ -75,7 +75,7 @@ function Signup(props) {
             if (credential.password === credential.verifyPassword) {
                 // If password is verified, finish sign up
                 setPasswordVerified(true);
-                props.onSignup(credential.username);
+                props.onSignup(credential);
                 navigate('/');
             } else {
                 // If password is not verified, do not proceed to sign up

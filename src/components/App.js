@@ -32,16 +32,17 @@ function App() {
           setNotes(userNotes.notes);
           setIsloaded(true);
         } else {
-          // If the user is not found in database, then create a user by post request
-          await axios.post('user/notes', {
-            username: username
-          });
-          setIsloaded(true);
-          // save the existing notes to the new account
-          axios.put('/user/notes', {
-            username: username,
-            notes: notes
-          }).then(res => console.log(res));
+          // // If the user is not found in database, then create a user by post request
+          // await axios.post('user/notes', {
+          //   username: username,
+          //   password: password
+          // });
+          // setIsloaded(true);
+          // // save the existing notes to the new account
+          // axios.put('/user/notes', {
+          //   username: username,
+          //   notes: notes
+          // }).then(res => console.log(res));
         }
       } else if (username == null) {
         // User is not logged in
@@ -97,8 +98,16 @@ function App() {
     setUser(username);
   }
 
-  function signUp(username) {
-    setUser(username);
+  async function signUp(credential) {
+    // Create a user by post request and save the existing notes to the new account
+    await axios.post('user/notes', {
+      username: credential.username,
+      password: credential.password,
+      notes: notes
+    });
+    setIsloaded(true);
+    
+    setUser(credential.username);
   }
 
   function handleLogout() {
