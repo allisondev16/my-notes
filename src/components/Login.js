@@ -12,6 +12,10 @@ function Login(props) {
 
     function handleLogin(event) {
         event.preventDefault();
+
+        // get date from database
+        // filter the password
+
         navigate('/');
         props.onLogin(credential.username);
     }
