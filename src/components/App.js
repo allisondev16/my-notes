@@ -27,23 +27,10 @@ function App() {
         // filter the data by current user in the State Hook
         const userNotes = req.data.find(userData => userData.username === username);
 
-        if (userNotes) {
-          // If existing user, then get the user's existing data by State Hook
-          setNotes(userNotes.notes);
-          setIsloaded(true);
-        } else {
-          // // If the user is not found in database, then create a user by post request
-          // await axios.post('user/notes', {
-          //   username: username,
-          //   password: password
-          // });
-          // setIsloaded(true);
-          // // save the existing notes to the new account
-          // axios.put('/user/notes', {
-          //   username: username,
-          //   notes: notes
-          // }).then(res => console.log(res));
-        }
+        // Get the user's existing data by State Hook
+        setNotes(userNotes.notes);
+        setIsloaded(true);
+
       } else if (username == null) {
         // User is not logged in
         setNotes([{
@@ -106,7 +93,7 @@ function App() {
       notes: notes
     });
     setIsloaded(true);
-    
+
     setUser(credential.username);
   }
 

@@ -1,23 +1,35 @@
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
+import axios from 'axios';
 
 function Login(props) {
 
     const navigate = useNavigate();
+
+    const [isInvalidPassword, setIsInvalidPassword] = useState(false);
 
     const [credential, setCredential] = useState({
         username: "",
         password: ""
     });
 
-    function handleLogin(event) {
+    async function handleLogin(event) {
         event.preventDefault();
 
-        // get date from database
-        // filter the password
+        // get data from database
+        const req = await axios.get('/user/notes');
 
-        navigate('/');
-        props.onLogin(credential.username);
+        // filter the password
+        const userData = req.data.find(user => {
+            return user.username == credential.username
+        });
+
+        if (userData.password == credential.password) {
+            navigate('/');
+            props.onLogin(credential.username);
+        } else {
+            setIsInvalidPassword(true);
+        }
     }
 
     function handleChange(event) {
@@ -38,6 +50,7 @@ function Login(props) {
                 <label>
                     Password
                     <input type="password" name="password" onChange={handleChange} />
+                    {isInvalidPassword && <p style={{textAlign:"center", width: "100%"}}>Invalid Username or Password</p>}
                 </label>
                 <input type="submit" name="LogIn" value="Log In" onClick={handleLogin} />
             </form>
