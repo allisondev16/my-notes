@@ -36,6 +36,12 @@ form.create-note {
     position: relative;
 }
 
+@media (max-width: 376px) {
+    form.create-note {
+        width: 320px;
+    }
+}
+
 form.create-note input,
 form.create-note textarea {
     width: 100%;
