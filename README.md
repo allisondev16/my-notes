@@ -134,3 +134,31 @@ useEffect(() => {
 - (React Router V6) `useNavigate()` may be used only in the context of a `<Router>` component.
 
 - async await vs then (https://stackoverflow.com/questions/54495711/async-await-vs-then-which-is-the-best-for-performance)
+
+- To break a line in an element using CSS: (https://stackoverflow.com/questions/8627902/how-to-add-a-new-line-in-textarea-element)
+```CSS
+.note p {
+    white-space: pre-wrap;
+}
+```
+
+- Serving static files in Express (https://expressjs.com/en/starter/static-files.html)
+
+- When I refresh the URL of other pages (e.g. http://localhost:5000/login), I encountered an error "Cannot GET". I was able to resolve this by using the "Catch-all" method. (https://ui.dev/react-router-cannot-get-url-refresh/)
+```JS
+app.get('/*', (req, res) => {
+    res.sendFile(path.join(__dirname, '../build/index.html'));
+});
+
+```
+before it was
+```JS
+app.get('/', (req, res) => {
+    res.sendFile(path.join(__dirname, '../build'));
+});
+
+```
+Where the sendFile method was not directed to the index.html and added "*" to the route.
+
+
+

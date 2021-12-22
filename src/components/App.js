@@ -35,7 +35,7 @@ function App() {
         // User is not logged in
         setNotes([{
           title: "Welcome to Notes by allison",
-          content: "Start by creating notes and you can edit and delete.\nLog in to save your notes!"
+          content: "\nStart by creating notes and you can edit and delete.\n\nLog in to save your notes!"
         }]);
       }
     }
@@ -110,24 +110,24 @@ function App() {
             <div>
 
               <TextArea onAdd={addNote} />
+              <div className="container">
+                {(isLoaded || !username) ?
 
-              {(isLoaded || !username) ?
+                  notes.map((note, index) => {
+                    return (<Note
+                      key={index}
+                      id={index}
+                      title={note.title}
+                      content={note.content}
+                      onDelete={deleteNote}
+                      onSave={saveEditedNote}
+                    />)
+                  }) :
 
-                notes.map((note, index) => {
-                  return (<Note
-                    key={index}
-                    id={index}
-                    title={note.title}
-                    content={note.content}
-                    onDelete={deleteNote}
-                    onSave={saveEditedNote}
-                  />)
-                }) :
+                  "Loading..."
 
-                "Loading..."
-
-              }
-
+                }
+              </div>
             </div>
           } />
           <Route path="login" element={<Login onLogin={changeUser} />} />
