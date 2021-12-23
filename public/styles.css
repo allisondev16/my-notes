@@ -36,7 +36,7 @@ form.create-note {
     position: relative;
 }
 
-@media (max-width: 376px) {
+@media (max-width: 415px) {
     form.create-note {
         width: 320px;
     }
