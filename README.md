@@ -1,5 +1,9 @@
 # About This App
-I created this notes app using the MERN stack. Deployed in Heroku with this link: https://allisonotes.herokuapp.com
+I created this notes app using the MERN stack.  
+Deployed in Heroku with this link: https://allisonotes.herokuapp.com
+
+The reference of this project was from Angela Yu's course in [Udemy](https://www.udemy.com/course/the-complete-web-development-bootcamp).  
+With this project, I changed the css and added login/signup with a backend. I also used react-router-dom v6.
 
 # What I Learned
 
