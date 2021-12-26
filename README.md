@@ -1,5 +1,5 @@
 # About This App
-I created this notes app using the MERN stack. Deployed in heroku with this link: allisonotes.herokuapp.com
+I created this notes app using the MERN stack. Deployed in heroku with this link: https://allisonotes.herokuapp.com/
 
 # What I Learned
 
