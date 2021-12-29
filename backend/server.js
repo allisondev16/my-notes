@@ -11,7 +11,7 @@ app.use(express.json());
 
 // API
 const users = require('./api/users');
-app.use('/user/notes', users);
+app.use('/users', users);
 
 // API Endpoints
 app.use(express.static(path.join(__dirname, '../build')));

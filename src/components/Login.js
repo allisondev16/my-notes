@@ -17,14 +17,14 @@ function Login(props) {
         event.preventDefault();
 
         // get data from database
-        const req = await axios.get('/user/notes');
+        const user = await axios.get(`/users/${credential.username}`);
 
         // filter the password
-        const userData = req.data.find(user => {
-            return user.username == credential.username
-        });
+        // const userData = req.data.find(user => {
+        //     return user.username === credential.username
+        // });
 
-        if (userData.password == credential.password) {
+        if (user.data.password === credential.password) {
             navigate('/');
             props.onLogin(credential.username);
         } else {

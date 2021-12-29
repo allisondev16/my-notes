@@ -57,7 +57,7 @@ function Signup(props) {
     async function handleSignUp(event) {
         event.preventDefault();
 
-        const req = await axios.get('/user/notes');
+        const req = await axios.get('/users');
         const userIsExisting = req.data.find(userData => userData.username === credential.username);
 
         if (userIsExisting) {

@@ -21,14 +21,11 @@ function App() {
       if (username != null) {
         // User is logged in
 
-        // get all the data in database
-        const req = await axios.get('/user/notes');
-
-        // filter the data by current user in the State Hook
-        const userNotes = req.data.find(userData => userData.username === username);
+        // get the user's data in database
+        const user = await axios.get(`/users/${username}`);
 
         // Get the user's existing data by State Hook
-        setNotes(userNotes.notes);
+        setNotes(user.data.notes);
         setIsloaded(true);
 
       } else if (username == null) {
@@ -45,15 +42,19 @@ function App() {
 
   useEffect(() => {
     const currentUsername = username;
-    if (currentUsername != null) {
-      // user is logged in, then save every changes of user's notes array
-      axios.put('/user/notes', {
-        username: currentUsername,
-        notes: notes
-      }).then(res => console.log(res));
-    } else if (currentUsername == null) {
-      // if username is blank (not logged in), then do not save any changes of the notes array
+    async function fetchData() {
+
+      if (currentUsername != null) {
+        // user is logged in, then save every changes of user's notes array
+        await axios.patch(`/users/${currentUsername}`, {
+          notes: notes
+        }).then(res => console.log(res));
+
+      } else if (currentUsername == null) {
+        // if username is blank (not logged in), then do not save any changes of the notes array
+      }
     }
+    fetchData();
   }, [notes]);
 
 
@@ -87,7 +88,7 @@ function App() {
 
   async function signUp(credential) {
     // Create a user by post request and save the existing notes to the new account
-    await axios.post('user/notes', {
+    await axios.post('/users', {
       username: credential.username,
       password: credential.password,
       notes: notes
