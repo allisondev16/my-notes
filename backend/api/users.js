@@ -14,7 +14,7 @@ router.get('/', async (req, res) => {
 
 router.get('/:username', getUser, (req, res) => {
     res.json(res.userdata);
-})
+});
 
 router.post('/', (req, res) => {
     const dbUser = req.body;
