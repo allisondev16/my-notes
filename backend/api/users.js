@@ -49,7 +49,7 @@ async function getUser(req, res, next) {
     try {
         userdata = await User.findOne({username: req.params.username});
         if (userdata == null) {
-            return res.status(400).json({message: "User not found."});
+            return res.json({message: "User not found."}); // removed the status(400) as it stops the execution at the client if the client requested for a user that does not exist
         }
     } catch (error) {
         return res.status(500).json({message: error.message});
