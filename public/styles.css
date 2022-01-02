@@ -18,14 +18,38 @@ header {
 }
 
 header a {
-
     text-decoration: none;
     color: white;
+}
+
+header a:hover {
+    text-decoration: underline;
 }
 
 header .title {
     font-size: 26px;
 }
+
+header .account {
+    display: flex;
+    align-items: center;
+}
+
+header .deleteIcon {
+    cursor: pointer;
+    background: none;
+    border: none;
+    color: white;
+    margin-left: 8px;
+    vertical-align: bottom;
+    height: 24px;
+}
+
+header .deleteIcon:hover {
+    background-color: red;
+    border-radius: 50%;
+}
+
 
 form.create-note {
     width: 400px;
@@ -108,6 +132,41 @@ form.login input[type="submit"] {
     flex-wrap: wrap;
 }
 
+.deletePage {
+    text-align: center;
+    padding: 26px 65px;
+}
+
+.deletePage__buttons {
+    width: 50%;
+    margin: auto;
+    display: flex;
+    justify-content: space-between;
+    margin-top: 32px;
+}
+
+@media (max-width: 415px) {
+    .deletePage__buttons {
+        width: 70%;
+    }
+}
+
+.deletePage__buttons button {
+    border: none;
+    border-radius: 16px;
+    padding: 8px 20px;
+}
+
+.deletePage__buttons--yes:hover{
+    background-color: red;
+    color: white;
+}
+
+.deletePage__buttons--no:hover{
+    background-color: green;
+    color: white;
+}
+
 .note {
     width: 250px;
     background-color: #fff1c9;
@@ -135,8 +194,9 @@ form.login input[type="submit"] {
     background: none;
     border: none;
     position: absolute;
-    bottom: 2px;
+    bottom: 6px;
     right: 5px;
+    height: 24px;
 }
 
 .note .editIcon {
@@ -161,8 +221,6 @@ form.login input[type="submit"] {
     color: white;
     opacity: 1;
     background-color: red;
-    height: 24px;
-    bottom: 6px;
     border-radius: 50%;
 }
 

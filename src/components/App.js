@@ -3,6 +3,7 @@ import TextArea from './TextArea';
 import Note from './Note';
 import Login from './Login';
 import Signup from './Signup';
+import Delete from './Delete';
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
@@ -133,6 +134,7 @@ function App() {
           } />
           <Route path="login" element={<Login onLogin={changeUser} />} />
           <Route path="signup" element={<Signup onSignup={signUp} />} />
+          <Route path="delete" element={<Delete user={username}/>} />
         </Route>
       </Routes>
 

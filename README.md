@@ -164,5 +164,11 @@ app.get('/', (req, res) => {
 ```
 Where the sendFile method was not directed to the index.html and added "*" to the route.
 
+- Make text show up on hover over button. Use title in order to display your message:
+```HTML
+<button class="addMore" title="click here">+</button>
+```
+(https://stackoverflow.com/questions/45456543/make-text-show-up-on-hover-over-button)
+
 
 
