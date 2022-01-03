@@ -11,7 +11,9 @@ function Delete(props) {
     }
 
     async function handleYes() {
-        await axios.delete(`/users/${props.user}`);
+        const res = await axios.delete(`/users/${props.user}`);
+        console.log(res);
+        props.clickedYes();
         navigate('/');
     }
 

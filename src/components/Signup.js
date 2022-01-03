@@ -60,7 +60,7 @@ function Signup(props) {
         // get the user's data
         const user = await axios.get(`/users/${credential.username}`);
         //const userIsExisting = req.data.find(userData => userData.username === credential.username);
-        console.log(user);
+        
         if (user.data.message !== "User not found.") {
             // render "That username is taken. Try another."
             setIsUsernameTaken(true);

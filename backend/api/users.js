@@ -42,7 +42,7 @@ router.patch("/:username", getUser, async (req, res) => {
 
 router.delete("/:username", getUser, async (req, res) => {
     try {
-        await res.userdate.remove();
+        await res.userdata.remove();
         res.json({message: "User has been deleted successfully."});
     } catch (error) {
         res.status(500).json({message: error.message});

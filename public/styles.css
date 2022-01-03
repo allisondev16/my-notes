@@ -138,7 +138,7 @@ form.login input[type="submit"] {
 }
 
 .deletePage__buttons {
-    width: 50%;
+    width: 25%;
     margin: auto;
     display: flex;
     justify-content: space-between;

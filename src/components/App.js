@@ -134,7 +134,7 @@ function App() {
           } />
           <Route path="login" element={<Login onLogin={changeUser} />} />
           <Route path="signup" element={<Signup onSignup={signUp} />} />
-          <Route path="delete" element={<Delete user={username}/>} />
+          <Route path="delete" element={<Delete user={username} clickedYes={handleLogout} />} />
         </Route>
       </Routes>
 

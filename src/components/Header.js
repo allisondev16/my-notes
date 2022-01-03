@@ -18,8 +18,8 @@ function Header(props) {
                     <Link to={'/login'} onClick={handleClick}>
                         {props.user ? "Logout " + props.user : "Login"}
                     </Link>
-                    {!props.user &&
-                        <Link to={'/delete'} onClick={handleClick}>
+                    {props.user &&
+                        <Link to={'/delete'}>
                             <button className="deleteIcon" title="Delete Account">
                                 <DeleteOutlineIcon />
                             </button>
