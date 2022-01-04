@@ -138,28 +138,43 @@ form.login input[type="submit"] {
 }
 
 .deletePage__buttons {
-    width: 25%;
+    width: 350px;
     margin: auto;
     display: flex;
     justify-content: space-between;
-    margin-top: 32px;
+    margin-top: 70px;
 }
 
 @media (max-width: 415px) {
     .deletePage__buttons {
-        width: 70%;
+        width: 100%;
+        flex-direction: column;
+        align-items: center;
+        margin-top: 50px;
     }
 }
 
 .deletePage__buttons button {
     border: none;
     border-radius: 16px;
-    padding: 8px 20px;
+    padding: 12px 50px;
+}
+
+@media (max-width: 415px) {
+    .deletePage__buttons button {
+        padding: 12px 50px;
+    }
 }
 
 .deletePage__buttons--yes:hover{
     background-color: red;
     color: white;
+}
+
+@media (max-width: 415px) {
+    .deletePage__buttons--yes{
+        margin-bottom: 30px;
+    }
 }
 
 .deletePage__buttons--no:hover{
