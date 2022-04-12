@@ -170,5 +170,10 @@ Where the sendFile method was not directed to the index.html and added "*" to th
 ```
 (https://stackoverflow.com/questions/45456543/make-text-show-up-on-hover-over-button)
 
-
+- [How to make the long text to fit inside a small div?](https://stackoverflow.com/questions/20565201/how-to-make-the-long-text-to-fit-inside-a-small-div)
+```CSS
+.note {
+  word-wrap: break-word;
+}
+```
 

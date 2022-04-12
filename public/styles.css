@@ -192,6 +192,7 @@ form.login input[type="submit"] {
     min-height: 150px;
     position: relative;
     transition: background-color 300ms ease-in-out;
+    word-wrap: break-word;
 }
 
 .note p {
