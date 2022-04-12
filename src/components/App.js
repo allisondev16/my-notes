@@ -49,7 +49,7 @@ function App() {
         // user is logged in, then save every changes of user's notes array
         await axios.patch(`/users/${currentUsername}`, {
           notes: notes
-        }).then(res => console.log(res));
+        });
 
       } else if (currentUsername == null) {
         // if username is blank (not logged in), then do not save any changes of the notes array
