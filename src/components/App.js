@@ -77,7 +77,13 @@ function App() {
 
     setNotes(prevValue => {
       const array = [...prevValue];
-      array[id] = editedNote;
+
+      // remove the element based on the id in the array
+      array.splice(id);
+
+      // add the edited note as first element of the array
+      array.unshift(editedNote);
+
       return array;
     });
 

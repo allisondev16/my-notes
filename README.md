@@ -177,3 +177,4 @@ Where the sendFile method was not directed to the index.html and added "*" to th
 }
 ```
 
+- [The splice() method adds and/or removes array elements.](https://www.w3schools.com/jsref/jsref_splice.asp)
