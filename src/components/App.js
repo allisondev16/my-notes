@@ -74,12 +74,12 @@ function App() {
   }
 
   function saveEditedNote(editedNote, id) {
-
+    console.log(id);
     setNotes(prevValue => {
       const array = [...prevValue];
 
       // remove the element based on the id in the array
-      array.splice(id);
+      array.splice(id, 1);
 
       // add the edited note as first element of the array
       array.unshift(editedNote);
