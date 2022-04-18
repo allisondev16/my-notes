@@ -20,13 +20,13 @@ float: left;
 
 - Using map Array method with ES6 syntax:
 ```JSX
-{notes.map((note, index) => {
-        return (<Note
-          key={index}
-          title={note.title}
-          content={note.content}
-        />)
-      })}
+notes.map((note, index) => {
+  return (<Note
+    key={index}
+    title={note.title}
+    content={note.content}
+  />)
+});
 ```
 
 - JavaScript Array methods Map and Filter
