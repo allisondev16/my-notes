@@ -9,8 +9,8 @@ function Note(props) {
 
     const [editable, setEditable] = useState(false)
     const [editedNote, setEditedNote] = useState({
-        title: props.title,
-        content: props.content
+        title: "title",
+        content: "content"
     })
 
     function deleteNote() {
@@ -25,7 +25,6 @@ function Note(props) {
             title: props.title,
             content: props.content
         });
-
     }
 
     function handleChange(event) {
