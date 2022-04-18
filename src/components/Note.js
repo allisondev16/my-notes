@@ -19,15 +19,23 @@ function Note(props) {
 
     function handleEdit() {
         setEditable(prevValue => { return !prevValue });
+
+        // Initialize the current Notes in editedNote state after the Edit button is clicked
+        setEditedNote({
+            title: props.title,
+            content: props.content
+        });
+
     }
 
     function handleChange(event) {
-        const {name, value} = event.target
-        
+        const { name, value } = event.target
+
+        // Update the current Note in editedNote state when changes are made
         setEditedNote(prevValue => {
-            return {...prevValue, [name]:value};
+            return { ...prevValue, [name]: value };
         })
-    }   
+    }
 
     function handleSave() {
         props.onSave(editedNote, props.id);
@@ -50,27 +58,27 @@ function Note(props) {
                 defaultValue={props.content}
                 onChange={handleChange}
             />
-            
+
             <button className="deleteIcon" onClick={handleEdit}>
                 <CloseIcon />
             </button>
             <button className="editIcon" onClick={handleSave}>
                 <SaveIcon />
             </button>
-            
+
         </div> :
 
             <div className="note">
                 <h1>{props.title}</h1>
                 <p>{props.content}</p>
-                
+
                 <button className="deleteIcon" onClick={deleteNote}>
                     <DeleteOutlineIcon />
                 </button>
                 <button className="editIcon" onClick={handleEdit}>
                     <EditIcon />
                 </button>
-                
+
             </div>
     )
 }

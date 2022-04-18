@@ -74,7 +74,7 @@ function App() {
   }
 
   function saveEditedNote(editedNote, id) {
-    console.log(id);
+
     setNotes(prevValue => {
       const array = [...prevValue];
 
