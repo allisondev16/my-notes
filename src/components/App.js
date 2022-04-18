@@ -61,7 +61,7 @@ function App() {
 
   function addNote(newNote) {
     setNotes(prevValue => {
-      return [...prevValue, newNote];
+      return [newNote, ...prevValue];
     });
   }
 
@@ -77,7 +77,13 @@ function App() {
 
     setNotes(prevValue => {
       const array = [...prevValue];
-      array[id] = editedNote;
+
+      // remove the element based on the id in the array
+      array.splice(id, 1);
+
+      // add the edited note as first element of the array
+      array.unshift(editedNote);
+
       return array;
     });
 

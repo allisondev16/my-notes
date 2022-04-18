@@ -177,3 +177,6 @@ Where the sendFile method was not directed to the index.html and added "*" to th
 }
 ```
 
+- [The splice() method adds and/or removes array elements.](https://www.w3schools.com/jsref/jsref_splice.asp)
+
+- [Use unshift. It's like push, except it adds elements to the beginning of the array instead of the end.](https://stackoverflow.com/questions/8073673/how-can-i-add-new-array-elements-at-the-beginning-of-an-array-in-javascript)
