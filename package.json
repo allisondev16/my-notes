@@ -42,10 +42,10 @@
       "last 1 chrome version",
       "last 1 firefox version",
       "last 1 safari version"
-    ],
-    "engines": {
-      "npm": ">=7.0.0 <8.0.0",
-      "node": ">=16.0.0 <17.0.0"
-    }
+    ]
+  },
+  "engines": {
+    "npm": ">=7.0.0 <8.0.0",
+    "node": ">=16.0.0 <17.0.0"
   }
 }
