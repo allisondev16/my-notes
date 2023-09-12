@@ -58,7 +58,7 @@ function Signup(props) {
         event.preventDefault();
 
         // get the user's data
-        const user = await axios.get(`/users/${credential.username}`);
+        const user = await axios.get(`${c.URL}/users/${credential.username}`);
         //const userIsExisting = req.data.find(userData => userData.username === credential.username);
         
         if (user.data.message !== "User not found.") {

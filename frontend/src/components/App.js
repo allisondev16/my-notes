@@ -7,6 +7,7 @@ import Delete from './Delete';
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import c from './constants'
 
 function App() {
 
@@ -23,7 +24,7 @@ function App() {
         // User is logged in
 
         // get the user's data in database
-        const user = await axios.get(`/users/${username}`);
+        const user = await axios.get(`${c.URL}/users/${username}`);
 
         // Get the user's existing data by State Hook
         setNotes(user.data.notes);
@@ -47,7 +48,7 @@ function App() {
 
       if (currentUsername != null) {
         // user is logged in, then save every changes of user's notes array
-        await axios.patch(`/users/${currentUsername}`, {
+        await axios.patch(`${c.URL}/users/${currentUsername}`, {
           notes: notes
         });
 
@@ -95,7 +96,7 @@ function App() {
 
   async function signUp(credential) {
     // Create a user by post request and save the existing notes to the new account
-    await axios.post('/users', {
+    await axios.post(`${c.URL}/users`, {
       username: credential.username,
       password: credential.password,
       notes: notes

@@ -17,7 +17,7 @@ function Login(props) {
         event.preventDefault();
 
         // get data from database
-        const user = await axios.get(`/users/${credential.username}`);
+        const user = await axios.get(`${c.URL}/users/${credential.username}`);
 
         // filter the password
         // const userData = req.data.find(user => {
