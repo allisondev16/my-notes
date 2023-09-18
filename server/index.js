@@ -7,13 +7,17 @@ const app = express();
 
 
 // Middlewares
-app.use(cors(
-    {
-        origin: ["https://my-notes-frontend-two.vercel.app/"],
-        methods: ["POST", "GET", "PATCH", "DELETE"],
-        credentials: true
-    }
-));
+// app.use(cors(
+//     {
+//         origin: ["https://my-notes-frontend-two.vercel.app/"],
+//         methods: ["POST", "GET", "PATCH", "DELETE"],
+//         credentials: true
+//     }
+// ));
+app.use((req, res, next) => {
+    res.header('Access-Control-Allow-Origin', '*');
+    next();
+});
 app.use(express.json());
 
 
