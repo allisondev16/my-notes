@@ -11,7 +11,7 @@ app.use(cors(
     {
         origin: "https://my-notes-frontend-two.vercel.app",
         methods: ["POST", "GET", "PATCH", "DELETE"],
-        credentials: true
+        //credentials: true
     }
 ));
 //app.use(cors())
