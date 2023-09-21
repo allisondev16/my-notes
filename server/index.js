@@ -14,8 +14,9 @@ const app = express();
 //         //credentials: true
 //     }
 // ));
+app.options('*', cors())
 app.use(cors())
-//app.options('*', cors())
+
 app.use(express.json());
 
 
