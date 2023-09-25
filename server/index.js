@@ -1,17 +1,17 @@
 const express = require('express');
 const path = require('path');
 require('./database');
-const cors = require('cors');
+//const cors = require('cors');
 
 const app = express();
 
 
 // Middlewares
-app.use(cors(
-    {
-        origin: ['https://my-notes-5fv4.onrender.com']
-    }
-));
+// app.use(cors(
+//     {
+//         origin: ['https://my-notes-5fv4.onrender.com']
+//     }
+// ));
 // app.use(cors())
 // app.options('*', cors())
 
