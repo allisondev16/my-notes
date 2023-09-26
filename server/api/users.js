@@ -4,7 +4,7 @@ const cors = require('cors');
 
 const User = require('../models/user');
 
-router.options('*', cors())
+router.options('/*', cors())
 
 router.get('/', async (req, res) => {
     try {
