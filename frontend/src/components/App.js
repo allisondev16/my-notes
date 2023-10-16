@@ -96,11 +96,16 @@ function App() {
 
   async function signUp(credential) {
     // Create a user by post request and save the existing notes to the new account
-    await axios.post(`${c.URL}/users`, {
-      username: credential.username,
-      password: credential.password,
-      notes: notes
-    });
+    try {
+      await axios.post(`${c.URL}/users`, {
+        username: credential.username,
+        password: credential.password,
+        notes: notes
+      });
+    } catch (error) {
+      console.log("Sign up error: ",error.message)
+    }
+    
     setIsloaded(true);
 
     setUser(credential.username);
