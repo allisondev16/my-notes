@@ -1,7 +1,7 @@
 const express = require('express');
 const path = require('path');
 require('./database');
-const cors = require('cors');
+//const cors = require('cors');
 
 const app = express();
 
@@ -20,13 +20,13 @@ const app = express();
 //     next();
 //   });
 
-const corsOptions ={
-   origin:'*', 
-   credentials:true,            //access-control-allow-credentials:true
-   optionSuccessStatus:200,
-}
+// const corsOptions ={
+//    origin:'*', 
+//    credentials:true,            //access-control-allow-credentials:true
+//    optionSuccessStatus:200,
+// }
 
-app.use(cors(corsOptions))
+// app.use(cors(corsOptions))
 
 
 app.use(express.json());
