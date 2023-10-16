@@ -1,10 +1,7 @@
 const express = require('express');
 const router = express.Router()
-const cors = require('cors');
 
 const User = require('../models/user');
-
-router.options('/*', cors())
 
 router.get('/', async (req, res) => {
     try {
@@ -19,7 +16,7 @@ router.get('/:username', getUser, (req, res) => {
     res.json(res.userdata);
 });
 
-router.post('/', cors(), (req, res) => {
+router.post('/', (req, res) => {
     const dbUser = req.body;
 
     User.create(dbUser, (err, data) => {

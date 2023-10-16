@@ -1,7 +1,7 @@
 const express = require('express');
 const path = require('path');
 require('./database');
-const cors = require('cors');
+//const cors = require('cors');
 
 const app = express();
 
@@ -12,8 +12,13 @@ const app = express();
 //         origin: ['https://my-notes-5fv4.onrender.com']
 //     }
 // ));
-app.use(cors())
+//app.use(cors())
 // app.options('*', cors())
+app.use(function(req, res, next) {
+    res.header("Access-Control-Allow-Origin", "*");
+    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+    next();
+  });
 
 
 app.use(express.json());
