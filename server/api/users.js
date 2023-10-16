@@ -22,7 +22,8 @@ router.get('/:username', getUser, (req, res) => {
 
 
 router.post('/', (req, res) => {
-    const dbUser = req.body;
+    try {
+        const dbUser = req.body;
 
     User.create(dbUser, (err, data) => {
         if (err) {
@@ -31,6 +32,10 @@ router.post('/', (req, res) => {
             res.status(201).send(data);
         }
     });
+    } catch (error) {
+        res.status(500).json({message: error.message});
+    }
+    
 });
 
 router.patch("/:username", getUser, async (req, res) => {
